@@ -1,0 +1,1 @@
+Following the official [Laracasts tutorial](https://laracasts.com/series/laravel-from-scratch-2018)
