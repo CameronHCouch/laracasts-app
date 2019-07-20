@@ -70,6 +70,7 @@
               <!-- local links to other views can be href'd like normal urls -->
               <a href="/">Home</a>
               <a href="/about">About Me</a>
+              <a href="/projects">Projects</a>
               <a href="/contact">Contact</a>
             </div>
             <div class="title m-b-md">
