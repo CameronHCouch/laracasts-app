@@ -8,13 +8,13 @@
 {{-- adding required to form inputs uses client-side validation to handle missing data, but this is not sufficient to preventing errors. For this reason, we add validations to the project controller! --}}
     <h1>Create a new Project!</h1>
     <form method="POST" action="/projects">
-      {{ csrf_field() }}
+      @csrf
       <div>
-        <input type="text" name="title" placeholder="Project title" value= {{ old('title') }}>
+        <input type="text" name="title" placeholder="Project title" value= {{ old('title') }} required>
       </div>
       
       <div>
-        <textarea name="description" placeholder="Project description" >{{ old('description') }} </textarea>
+        <textarea name="description" placeholder="Project description" required>{{ old('description') }} </textarea>
       </div>
       
       <div>
@@ -22,13 +22,5 @@
       </div>
     </form>
 
-    @if ($errors->any())
-      <div class="errors">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div>
-    @endif
+    @include('errors')
 @endsection

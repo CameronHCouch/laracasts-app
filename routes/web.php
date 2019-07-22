@@ -17,6 +17,8 @@ Route::get('/contact', 'PagesController@contact');
 
 Route::resource('projects', 'ProjectsController');
 
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
+Route::patch('/tasks/{task}', 'ProjectTasksController@update');
 /*
 ^ resource gives us all of these. To see available routes in a project, run
 $ php artisan route:list

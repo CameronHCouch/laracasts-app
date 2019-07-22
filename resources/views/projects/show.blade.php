@@ -10,13 +10,26 @@
     <a href="/projects/{{$project->id}}/edit">Edit</a>
 
     @if($project->tasks->count())
-        <div class="project-tasks">
-            <ul>
-                @foreach($project->tasks as $task)
-                    <li>{{ $task->description }}</li>
-                @endforeach
-            </ul>
-        </div>
+        @foreach($project->tasks as $task)
+            <form class="project-tasks" method="POST" action="/tasks/{{ $task->id }}">
+                {{ csrf_field() }}
+                {{ method_field('PATCH') }}
+            <label class="checkbox {{ $task->completed ? 'is-complete' : '' }}" for="completed">
+                    <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
+                        {{ $task->description }}
+                </label>
+
+            </form>
+        @endforeach
     @endif
+
+    <form method="POST" action="/projects/{{ $project->id }}/tasks">
+        @csrf
+        <label for="description">New Task</label>
+        <input type="text" class="input" name="description" placeholder="New Task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    @include('errors')
 
 @endsection

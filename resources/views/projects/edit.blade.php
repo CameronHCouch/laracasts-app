@@ -8,7 +8,7 @@
     <h1>Edit this Project!</h1>
     <form method="POST" action="/projects/{{$project->id}}">
       {{ method_field('PATCH') }}
-      {{ csrf_field() }}
+      @csrf
       <div>
       <input type="text" name="title" class="title" placeholder="Project title" value="{{$project->title}}" required/>
       </div>
@@ -23,7 +23,9 @@
     </form>
     <form method="POST" action="/projects/{{$project->id}}">
       {{ method_field('DELETE') }}
-      {{ csrf_field() }}
-      <button type="submit" class="red">Delete Project</button
+      @csrf
+      <button type="submit" class="delete">Delete Project</button>
     </form>
+
+    @include('errors')
 @endsection
