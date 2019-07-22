@@ -12,4 +12,6 @@
         <li>{{ $project->title }}</li>
     @endforeach
     </ol>
+
+    <a href="/projects/create">Create a new Project!</a>
 @endsection
