@@ -7,4 +7,9 @@
 {{-- to add code here, instead use {!! $foo !!} --}}
     <h1>Projects!</h1>
 {{-- Blade syntax simplifies looping and compiles to vanilla PHP --}}
+    <ol>
+    @foreach ($projects as $project)
+        <li>{{ $project->title }}</li>
+    @endforeach
+    </ol>
 @endsection
