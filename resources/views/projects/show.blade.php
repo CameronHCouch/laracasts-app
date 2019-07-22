@@ -1,6 +1,8 @@
 @extends('layout')
 {{-- sections can be filled inline using the below syntax; this is great for smaller changes --}}
-@section('title', '{{$project->title}}')   
+@section('title') 
+    {{$project->title}}
+@endsection   
 
 @section('content')
     <h1>{{$project->title}}!</h1>

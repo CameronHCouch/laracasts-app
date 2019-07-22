@@ -10,14 +10,12 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
-        
+        $projects = Project::all(); 
         return view('projects.index', compact('projects'));
     }
 
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::find($id);
         return view('projects.show', compact('project'));
     }
 
@@ -28,39 +26,47 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        // note: there is a much more succinct way of doing this
-        // also: this method does not yet handle validations & errors
+        /*
+        note: there is a much more succinct way of doing this
+        also: this method does not yet handle validations & errors
         $project = new Project();
 
         $project->title = request('title');
         $project->description = request('description');
         $project->save();
+        */
 
+        /* more succint than manually creating
+        Project::create([
+            'title' => request('title'),
+            'description' => request('description')
+        ]);
+        */
+
+        # and now, even more succinctly
+
+        Project::create(request(['title', 'description']));
         return redirect('/projects');
     }
 
-    public function edit($id)
+    public function edit(Project $project)
     {
-        $project = Project::find($id);
-
         return view('projects.edit', compact('project'));
     }
 
-    public function update($id)
+    public function update(Project $project)
     {
-        $project = Project::find($id);
+        // $project->title = request('title');
+        // $project->description = request('description');
+        // $project->save();
 
-        $project->title = request('title');
-        $project->description = request('description');
-        $project.save();
-
+        $project->update(request(['title', 'description']));
         return redirect('/projects');
     }
 
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        Project::find($id)->delete();
-
+        $project->delete();
         return redirect('/projects');
 
     }
