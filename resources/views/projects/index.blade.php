@@ -9,7 +9,7 @@
 {{-- Blade syntax simplifies looping and compiles to vanilla PHP --}}
     <ol>
     @foreach ($projects as $project)
-        <li>{{ $project->title }}</li>
+        <li><a href="/projects/{{$project->id}}">{{ $project->title }}</a></li>
     @endforeach
     </ol>
 
