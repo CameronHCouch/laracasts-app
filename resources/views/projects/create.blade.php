@@ -10,7 +10,7 @@
     <form method="POST" action="/projects">
       @csrf
       <div>
-        <input type="text" name="title" placeholder="Project title" value= {{ old('title') }} required>
+        <input type="text" name="title" placeholder="Project title" value="{{ old('title') }}" required>
       </div>
       
       <div>
